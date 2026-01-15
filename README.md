@@ -44,3 +44,85 @@ Since EcoAPI is not yet hosted on Maven Central, you must install it into your *
 2.  Publish the artifact to your local cache with the following command (Maven)
 ```bash
 mvn install:install-file -Dfile=Path/To/EcoAPI.jar -DgroupId=com.dunystudios.hytale.plugins -DartifactId=EcoAPI -Dversion=1.0-SNAPSHOT -Dpackaging=jar
+```
+
+### Step 2: Add Dependency
+Add EcoAPI to your project.
+```xml
+<dependencies>
+    <dependency>
+        <groupId>com.dunystudios.hytale.plugins</groupId>
+        <artifactId>EcoAPI</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <scope>provided</scope>
+    </dependency>
+</dependencies>
+```
+
+### Step 3: Usage Examples
+A. Using the Economy (Consumer)
+If you are making a Shop or Job plugin, use the API to modify balances:
+```java
+// Get the economy plugin
+IEcoAPI economy = IEcoAPI.Service.getInstance();
+
+// Get the balance of a player
+float balance = economy.getBalance(uuid);
+
+// Add 10 of balance to a player
+economy.addBalance(uuid, 10);
+
+// Remove 10 of balance from a player
+economy.removeBalance(uuid, 10);
+
+// Set 10 of balance to a player
+economy.setBalance(uuid, 10);
+```
+
+B. Providing the Economy (Implementer)
+If you are making an Economy plugin, you must implement the interface and register it.
+
+Main class:
+```java
+
+public class MyEconomyPlugin extends JavaPlugin {
+    private final Economy economy;
+
+    public MyEconomyPlugin() {
+        this.economy = new Economy();
+    }
+
+    @Override
+    protected void setup() {
+        IEcoAPI.Service.setInstance(economy);
+    }
+
+}
+```
+
+Economy class:
+```java
+public class Economy implements IEcoAPI {
+
+    @Override
+    public float getBalance(UUID uuid) {
+        // Your logic
+        return 0;
+    }
+
+    @Override
+    public void addBalance(UUID uuid, float v) {
+        // Your logic
+    }
+
+    @Override
+    public void removeBalance(UUID uuid, float v) {
+        // Your logic
+    }
+
+    @Override
+    public void setBalance(UUID uuid, float v) {
+        // Your logic
+    }
+}
+```
