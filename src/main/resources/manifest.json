@@ -1,0 +1,24 @@
+{
+  "Group": "com.dunystudios.hytale.plugins",
+  "Name": "EcoAPI",
+  "Version": "1.0.0",
+  "Description": "Hytale Economy API Plugin",
+  "Main": "com.dunystudios.hytale.plugins.EcoAPI",
+  "Authors": [
+    {
+      "Name": "Zen-kun04",
+      "Email": "baguette@dunystudios.com",
+      "Url": "https://github.com/Zen-kun04"
+    }
+  ],
+  "Website": "https://example.com/myplugin",
+  "ServerVersion": ">=0.0.1",
+  "Dependencies": {
+  },
+  "OptionalDependencies": {
+  },
+  "LoadBefore": {
+  },
+  "DisabledByDefault": false,
+  "IncludesAssetPack": false
+}
